@@ -143,8 +143,13 @@ function generate(m::GPTLanguageModel, context, max_new_tokens)
     cpu(idx)
 end
 
+# initialize the model
 model = GPTLanguageModel(vocab_size, block_size, n_embd) |> device
+
+# generate from the model
 printsample(model)
+
+# initialize the Flux optimizer
 optim = Flux.setup(Flux.AdamW(learning_rate), model)
 
 function train!(model)
@@ -167,5 +172,8 @@ function train!(model)
     testmode!(model)
 end
 
+# train the model
 train!(model)
+
+# generate from the model
 println(gensample())
