@@ -145,13 +145,12 @@ end
 
 model = GPTLanguageModel(vocab_size, block_size, n_embd) |> device
 printsample(model)
-trainmode!(model)
 optim = Flux.setup(Flux.AdamW(learning_rate), model)
 
 function train!(model)
+    trainmode!(model)
     batch_mask = (1 .- triu(ones(Float32, block_size, block_size))) .* (-1f9) |> device
-    for iter in 1:max_iters
-        print(".")
+    @showprogress for iter in 1:max_iters
         xb, yb = getbatch("train")
         # every once in a while evaluate the loss on train and val sets
         if iter == 1 || iter % eval_interval == 0 || (iter == max_iters)
@@ -165,6 +164,7 @@ function train!(model)
         end
         Flux.update!(optim, model, grads[1])
     end
+    testmode!(model)
 end
 
 train!(model)

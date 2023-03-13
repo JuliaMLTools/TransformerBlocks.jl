@@ -5,3 +5,4 @@ using Functors
 using Random
 using LinearAlgebra
 using Distributions
+using ProgressMeter
