@@ -1,0 +1,6 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+TransformerBlocks = "5cc1ab4e-60b8-441f-a6b4-07f482118326"
+
+[compat]
+Documenter = "0.27"

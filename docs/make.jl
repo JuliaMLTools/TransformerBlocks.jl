@@ -1,2 +1,5 @@
 using Documenter, TransformerBlocks
-makedocs(modules = [TransformerBlocks], sitename="TransformerBlocks.jl")
+makedocs(sitename="TransformerBlocks.jl")
+deploydocs(
+    repo = "github.com/JuliaMLTools/TransformerBlocks.jl.git",
+)

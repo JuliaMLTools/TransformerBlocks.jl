@@ -1,5 +1,10 @@
 # Transformer block: communication followed by computation
 
+"""
+    Block
+
+The basic transformer block.
+"""
 struct Block
     sa
     ffwd
@@ -9,6 +14,11 @@ end
 
 Functors.@functor Block
 
+"""
+    Block(input_dim; num_heads=1, head_size=(input_dim÷num_heads), dropout=0)
+
+Creates a transformer block.
+"""
 function Block(input_dim; num_heads=1, head_size=(input_dim÷num_heads), dropout=0)
     Block(
         MultiheadAttention(input_dim, num_heads; dropout=dropout),        
