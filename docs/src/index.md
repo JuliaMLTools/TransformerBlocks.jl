@@ -1,4 +1,9 @@
 # TransformerBlocks.jl
+
+```@meta
+CurrentModule = TransformerBlocks
+```
+
 ### Simple, blazing fast, transformer components.
 
 
