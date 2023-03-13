@@ -3,7 +3,7 @@
 """
     Block
 
-The basic transformer block.
+A single transformer block: communication followed by computation
 """
 struct Block
     sa

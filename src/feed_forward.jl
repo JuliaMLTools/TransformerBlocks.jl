@@ -1,3 +1,8 @@
+"""
+    FeedForward
+
+A simple linear layer followed by a non-linearity
+"""
 struct FeedForward
     net
 end

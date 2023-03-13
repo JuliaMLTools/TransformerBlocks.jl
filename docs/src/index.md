@@ -7,7 +7,7 @@
 ```julia
 using TransformerBlocks
 
-# C: input embedding dimension
+# C: channel size (embedding dimension)
 # T: block size (sequence length)
 # B: batch size
 C, T, B = 10, 5, 3
@@ -32,15 +32,11 @@ blocks = BlockList([Block(C) for _ in 1:num_layers])
 ## Components
 
 ```@docs
+TransformerBlocks.Head
+MultiheadAttention
+FeedForward
 Block
-```
-
-```@docs
-Block(input_dim; num_heads=1, head_size=(input_dim÷num_heads), dropout=0)
-```
-
-```@docs
-func(x)
+BlockList
 ```
 
 ## API index

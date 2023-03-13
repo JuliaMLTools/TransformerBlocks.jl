@@ -1,5 +1,3 @@
-# one head of self-attention
-
 struct Head
     key
     query
@@ -10,6 +8,11 @@ end
 
 Functors.@functor Head (key,query,value,dropout)
 
+"""
+    Head(input_dim, head_size; dropout=0)
+
+Initializes one instance of the **`Head`** type, representing one head of self-attention.
+"""
 function Head(input_dim, head_size; dropout=0)
     Head(
         Dense(input_dim, head_size, bias=false),
@@ -20,6 +23,23 @@ function Head(input_dim, head_size; dropout=0)
     )
 end
 
+"""
+    (::Head)(x; mask=nothing)
+
+A **`Head`** instance accepts an input array **`x`** of dimensions (C, T, B) and outputs an array of dimensions (HS, T, B). "C" is the channel size (embedding dimension). "T" is the block size (number of input tokens). "B" is the batch size. "HS" is the head size.
+
+The following keyword arguments are supported:
+- `mask` (Defaults to nothing. Must be of dimensions (T, T).)
+
+## Examples:
+
+```julia
+C,T,B = 2,3,4
+HS = 10
+head = Head(C,HS)
+@assert size(head(rand(C,T,B))) == (HS,T,B)
+```
+"""
 function (m::Head)(x; mask=nothing)
     C, T, B = size(x)
     k = m.key(x) # (hs,T,B)

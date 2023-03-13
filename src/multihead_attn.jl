@@ -1,4 +1,8 @@
-# multiple heads of self-attention in parallel
+"""
+    MultiheadAttention
+
+Multiple heads of self-attention in parallel
+"""
 struct MultiheadAttention
     heads
     proj

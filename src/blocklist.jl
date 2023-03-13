@@ -1,3 +1,8 @@
+"""
+    BlockList
+
+A sequence of transformer blocks composed together
+"""
 struct BlockList
     list
 end
