@@ -33,10 +33,10 @@ blocks = BlockList([Block(C) for _ in 1:num_layers])
 
 ```@docs
 TransformerBlocks.Head
-MultiheadAttention
-FeedForward
-Block
-BlockList
+TransformerBlocks.MultiheadAttention
+TransformerBlocks.FeedForward
+TransformerBlocks.Block
+TransformerBlocks.BlockList
 ```
 
 ## API index

@@ -11,9 +11,11 @@ Functors.@functor Head (key,query,value,dropout)
 """
     Head(input_dim, head_size; dropout=0)
 
-Initializes one instance of the **`Head`** type, representing one head of self-attention.
+Initializes an instance of the **`Head`** type, representing one head of self-attention.
 """
 function Head(input_dim, head_size; dropout=0)
+    @assert input_dim > 0
+    @assert head_size > 0
     Head(
         Dense(input_dim, head_size, bias=false),
         Dense(input_dim, head_size, bias=false),
@@ -34,10 +36,10 @@ The following keyword arguments are supported:
 ## Examples:
 
 ```julia
-C,T,B = 2,3,4
+C,T,B = 8,3,4
 HS = 10
 head = Head(C,HS)
-@assert size(head(rand(C,T,B))) == (HS,T,B)
+@assert size(head(rand(Float32, C,T,B))) == (HS,T,B)
 ```
 """
 function (m::Head)(x; mask=nothing)
