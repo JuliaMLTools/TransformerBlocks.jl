@@ -1,6 +1,5 @@
 cd(@__DIR__)
 include("imports.jl")
-include("helper.jl")
 
 batch_size = 64 # how many independent sequences will we process in parallel?
 block_size = 256 # what is the maximum context length for predictions?
@@ -84,9 +83,6 @@ n = Int(round(0.9*length(data))) # first 90% will be train, rest val
 train_data = data[1:n]
 val_data = data[n:end]
 
-
-
-
 # data loading
 function getbatch(split)
     # generate a small batch of data of inputs x and targets y
@@ -147,32 +143,16 @@ function generate(m::GPTLanguageModel, context, max_new_tokens)
     cpu(idx)
 end
 
-
-
 model = GPTLanguageModel(vocab_size, block_size, n_embd) |> device
-gensample(model)
+printsample(model)
 trainmode!(model)
-
-x1, y1 = getbatch("train") .|> device
-decode(x1[:,1])
-batch_mask = (1 .- triu(ones(Float32, block_size, block_size))) .* (-1f9) |> device
-model(x1; mask=batch_mask)
-model(x1, y1; mask=batch_mask)
-model(device(ones(Int, 2, 1)))
-
 optim = Flux.setup(Flux.AdamW(learning_rate), model)
 
-# # sample a batch of data
-#xb, yb = getbatch("train")
-
-
-function trainit(model)
+function train!(model)
     batch_mask = (1 .- triu(ones(Float32, block_size, block_size))) .* (-1f9) |> device
-
     for iter in 1:max_iters
         print(".")
         xb, yb = getbatch("train")
-
         # every once in a while evaluate the loss on train and val sets
         if iter == 1 || iter % eval_interval == 0 || (iter == max_iters)
             println("\nestimating loss...")
@@ -180,16 +160,12 @@ function trainit(model)
             println("step $(iter): train loss $(round(losses["train"], digits=4)), val loss $(round(losses["val"], digits=4))")
             printsample(model)
         end
-
         loss, grads = Flux.withgradient(model) do m
             m(xb, yb; mask=batch_mask).loss
         end
-
         Flux.update!(optim, model, grads[1])
     end
 end
 
-trainit(model)
-#step 2000: train loss 1.3241, val loss 1.5975
-
+train!(model)
 println(gensample())
