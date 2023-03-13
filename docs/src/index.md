@@ -25,7 +25,7 @@ mask = (1 .- triu(ones(Float32, T, T))) .* (-1f9)
 # Example 3: Sequential blocks
 num_layers = 3
 blocks = BlockList([Block(C) for _ in 1:num_layers])
-@assert size(blocks(x)) == (C, T, B)
+@assert size(blocks(x)) == (C, T, B) 
 ```
 
 
