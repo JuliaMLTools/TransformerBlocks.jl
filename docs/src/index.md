@@ -28,6 +28,10 @@ blocks = BlockList([Block(C) for _ in 1:num_layers])
 @assert size(blocks(x)) == (C, T, B)
 ```
 
+## API index
+
+```@index
+```
 
 ## Components
 
@@ -37,9 +41,4 @@ TransformerBlocks.MultiheadAttention
 TransformerBlocks.FeedForward
 TransformerBlocks.Block
 TransformerBlocks.BlockList
-```
-
-## API index
-
-```@index
 ```
