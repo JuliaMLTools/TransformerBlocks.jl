@@ -154,7 +154,7 @@ optim = Flux.setup(Flux.AdamW(learning_rate), model)
 
 function train!(model)
     trainmode!(model)
-    batch_mask = (1 .- triu(ones(Float32, block_size, block_size))) .* (-1f9) |> device
+    batch_mask = Float32.(tril(fill(-Inf, block_size, block_size), -1)) |> device
     @showprogress for iter in 1:max_iters
         xb, yb = getbatch("train")
         # every once in a while evaluate the loss on train and val sets

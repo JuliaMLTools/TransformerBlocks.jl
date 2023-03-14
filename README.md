@@ -15,7 +15,7 @@ block = Block(C)
 
 # Example 2: Block with mask
 using LinearAlgebra
-mask = (1 .- triu(ones(Float32, T, T))) .* (-1f9)
+mask = tril(fill(-Inf, T, T), -1)
 @assert size(block(x; mask=mask)) == (C, T, B)
 
 # Example 3: Sequential blocks
