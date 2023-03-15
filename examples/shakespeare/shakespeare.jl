@@ -176,4 +176,4 @@ end
 train!(model)
 
 # generate from the model
-println(gensample())
+printsample(model)
