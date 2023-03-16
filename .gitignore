@@ -24,4 +24,4 @@ docs/site/
 Manifest.toml
 
 .vscode
-docs/.DS_Store
+**/.DS_Store
