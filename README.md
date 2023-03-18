@@ -10,25 +10,6 @@
 [docs-stable-url]: https://juliamltools.github.io/TransformerBlocks.jl/stable/
 
 
-## Installation
-
-The package can be installed with the Julia package manager.
-From the Julia REPL, type `]` to enter the Pkg REPL mode and run:
-
-```
-pkg> add TransformerBlocks
-```
-
-Or, equivalently, via the `Pkg` API:
-
-```julia
-julia> import Pkg; Pkg.add("TransformerBlocks")
-```
-
-## Project Status
-
-The package is tested against, and being developed for, Julia `1.8` and above on Linux, macOS, and Windows.
-
 ## Example usage
 
 ```julia
@@ -54,3 +35,23 @@ num_layers = 3
 blocks = BlockList([Block(C) for _ in 1:num_layers])
 @assert size(blocks(x)) == (C, T, B)
 ```
+
+
+## Installation
+
+The package can be installed with the Julia package manager.
+From the Julia REPL, type `]` to enter the Pkg REPL mode and run:
+
+```
+pkg> add TransformerBlocks
+```
+
+Or, equivalently, via the `Pkg` API:
+
+```julia
+julia> import Pkg; Pkg.add("TransformerBlocks")
+```
+
+## Project Status
+
+The package is tested against, and being developed for, Julia `1.8` and above on Linux, macOS, and Windows.
