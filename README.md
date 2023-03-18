@@ -1,5 +1,36 @@
 # TransformerBlocks.jl
 
+[![][docs-stable-img]][docs-stable-url]
+[![][docs-dev-img]][docs-dev-url]
+
+[docs-dev-img]: https://img.shields.io/badge/docs-dev-blue.svg
+[docs-dev-url]: https://juliamltools.github.io/TransformerBlocks.jl/dev/
+
+[docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
+[docs-stable-url]: https://juliamltools.github.io/TransformerBlocks.jl/stable/
+
+
+## Installation
+
+The package can be installed with the Julia package manager.
+From the Julia REPL, type `]` to enter the Pkg REPL mode and run:
+
+```
+pkg> add TransformerBlocks
+```
+
+Or, equivalently, via the `Pkg` API:
+
+```julia
+julia> import Pkg; Pkg.add("TransformerBlocks")
+```
+
+## Project Status
+
+The package is tested against, and being developed for, Julia `1.8` and above on Linux, macOS, and Windows.
+
+## Example usage
+
 ```julia
 using TransformerBlocks
 
