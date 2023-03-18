@@ -1,5 +1,5 @@
-struct FeedForward
-    net
+struct FeedForward{N}
+    net::N
 end
 
 Functors.@functor FeedForward

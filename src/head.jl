@@ -1,9 +1,9 @@
-struct Head
-    key
-    query
-    value
-    dropout
-    inv_sqrt_dₖ
+struct Head{K,Q,V,D,DK}
+    key::K
+    query::Q
+    value::V
+    dropout::D
+    inv_sqrt_dₖ::DK
 end
 
 Functors.@functor Head (key,query,value,dropout)

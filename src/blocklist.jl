@@ -20,8 +20,8 @@ blocklist = BlockList([Block(C), Block(C)])
 @assert size(blocklist(rand(Float32, C,T,B))) == (C,T,B)
 ```
 """
-struct BlockList
-    list
+struct BlockList{T<:Union{Tuple, NamedTuple, AbstractVector}}
+    list::T
 end
 
 Functors.@functor BlockList

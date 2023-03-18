@@ -1,7 +1,7 @@
-struct MultiheadAttention
-    heads
-    proj
-    dropout
+struct MultiheadAttention{H<:Union{Tuple, NamedTuple, AbstractVector}, P, D}
+    heads::H
+    proj::P
+    dropout::D
 end
 
 Functors.@functor MultiheadAttention

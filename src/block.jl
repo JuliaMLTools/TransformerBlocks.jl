@@ -1,8 +1,8 @@
-struct Block
-    sa
-    ffwd
-    ln1
-    ln2
+struct Block{S,F,L1,L2}
+    sa::S
+    ffwd::F
+    ln1::L1
+    ln2::L2
 end
 
 Functors.@functor Block

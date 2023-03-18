@@ -9,7 +9,6 @@ eval_iters = 200
 n_embd = 384
 n_head = 6
 head_size = n_embd ÷ n_head
-inv_sqrt_dₖ = Float32(1 / sqrt(head_size))
 n_layer = 6
 dropout = 0.2
 
