@@ -41,7 +41,6 @@ function MultiheadAttention(input_dim, num_heads; head_size=(input_dim ÷ num_he
 end
 
 function (m::MultiheadAttention)(x; mask=nothing)
-    # TODO: replace with mapreduce
-    heads_out = reduce(vcat, [head(x; mask=mask) for head in m.heads])
+    heads_out = mapreduce(head->head(x; mask=mask), vcat, m.heads)
     m.dropout(m.proj(heads_out))
 end
