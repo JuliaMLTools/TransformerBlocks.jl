@@ -9,6 +9,8 @@
 [docs-stable-img]: https://img.shields.io/badge/docs-stable-blue.svg
 [docs-stable-url]: https://juliamltools.github.io/TransformerBlocks.jl/stable/
 
+This package aims to be a consise, performant implementation of the pseudocode found in 
+[Formal Algorithms for Transformers](https://arxiv.org/pdf/2207.09238.pdf).
 
 ## Example usage
 
